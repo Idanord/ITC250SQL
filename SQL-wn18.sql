@@ -1,0 +1,22 @@
+/*
+SQL-wn18.sql
+*/
+
+DROP TABLE IF EXISTS wn18_clients;
+
+CREATE TABLE wn18_clients(
+ClientID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+SurveyID INT UNSIGNED DEFAULT 0,
+LastName VARCHAR(255) DEFAULT '',
+FirstName VARCHAR(255) DEFAULT '',
+Email VARCHAR(255) DEFAULT '',
+Address VARCHAR(255) DEFAULT '',
+PhoneNumber VARCHAR(255) DEFAULT '',
+DateAdded DATETIME,
+LastUpdated TIMESTAMP DEFAULT 0 ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (ClientID),
+INDEX SurveyID_index(SurveyID),
+FOREIGN KEY (SurveyID) REFERENCES wn18_surveys(SurveyID) ON DELETE CASCADE
+)
+
+INSERT INTO wn18_clients VALUES (NULL,1,'Fisher','Will','william.fisher@seattlecentral.edu','17343 Military Rd S','206-555-5555',NOW(),NOW());
